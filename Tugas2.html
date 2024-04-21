@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; My sample book</title>
+    <title>TUGAS 2 &#8212; My sample book</title>
   
   
   
@@ -42,7 +42,7 @@
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Tugas2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
+    <link rel="next" title="&lt;no title&gt;" href="Tugas3.html" />
     <link rel="prev" title="TUGAS 1" href="SistemLinier.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -176,10 +176,10 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="SistemLinier.html"><strong>TUGAS 1</strong></a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>TUGAS 2</strong></a></li>
 </ul>
 
     </div>
@@ -365,7 +365,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>TUGAS 2</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -374,9 +374,12 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sifat-penjumlahan-matriks">Sifat penjumlahan matriks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-penjumlahannya">contoh penjumlahannya</a></li>
 </ul>
-
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -387,14 +390,100 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>#Aljabar Matrix
-tidak mengerjakan keluar kelas</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="tugas-2">
+<h1><strong>TUGAS 2</strong><a class="headerlink" href="#tugas-2" title="Link to this heading">#</a></h1>
+<p>##Aljabar Matrix</p>
 <ul class="simple">
 <li><p>berikut penjelasan tentang apa itu matrix</p></li>
 <li><p>operasi matrix</p></li>
 <li><p>membuat penjumlahan, perkalian, transpose matrix A dan B</p></li>
 <li><p>bikin program untuk mengalikan matrix A dan B tanpa menggunakan &#64;</p></li>
 </ul>
+<p>##pengertian matrix</p>
+<p>Matriks adalah kumpulan bilangan yang disusun dalam baris dan kolom. Ia digunakan untuk merepresentasikan data atau hubungan matematika, serta digunakan dalam berbagai bidang seperti matematika, ilmu komputer, fisika, dan ekonomi untuk melakukan berbagai operasi seperti penambahan, pengurangan, perkalian, dan lainnya.</p>
+<section id="sifat-penjumlahan-matriks">
+<h2>Sifat penjumlahan matriks<a class="headerlink" href="#sifat-penjumlahan-matriks" title="Link to this heading">#</a></h2>
+<p>Penjumlahan hanya berlaku pada matriks yang memiliki ordo sama. Jika ordo antarmatriksnya berbeda, maka tidak bisa dilakukan penjumlahan. Misalnya, penjumlahan antarmatriks ordo 2 × 2, antarmatriks 3 × 3, dan seterusnya. Penjumlahan ini memenuhi sifat-sifat berikut.</p>
+<ul class="simple">
+<li><p>Sifat komutatif, yaitu sifat yang memenuhi A + B = B + A.</p></li>
+<li><p>Sifat asosiatif, yaitu sifat yang memenuhi (A + B) + C = A + (B + C).</p></li>
+<li><p>Sifat matriks nol, yaitu sifat yang memenuhi A + 0 = A.</p></li>
+</ul>
+<section id="contoh-penjumlahannya">
+<h3>contoh penjumlahannya<a class="headerlink" href="#contoh-penjumlahannya" title="Link to this heading">#</a></h3>
+<p>\begin{align*}
+A=
+\begin{bmatrix}
+2&amp;-3&amp;4\
+1&amp;0&amp;-7
+\end{bmatrix}
+&amp;&amp;
+B=
+\begin{bmatrix}
+6&amp;2&amp;-4\
+3&amp;5&amp;2
+\end{bmatrix}
+\end{align*}</p>
+<p>\begin{align*}
+A+B&amp;=
+\begin{bmatrix}
+2&amp;-3&amp;4\
+1&amp;0&amp;-7
+\end{bmatrix}
++
+\begin{bmatrix}
+6&amp;2&amp;-4\
+3&amp;5&amp;2
+\end{bmatrix}\
+&amp;=
+\begin{bmatrix}
+2+6&amp;-3+2&amp;4+(-4)\
+1+3&amp;0+5&amp;-7+2
+\end{bmatrix}
+=\begin{bmatrix}
+8&amp;-1&amp;0\
+4&amp;5&amp;-5
+\end{bmatrix}
+\end{align*}</p>
+<p>###Sifat pengurangan matriks
+Sama seperti penjumlahan, pengurangan hanya berlaku untuk matriks berordo sama. Namun, sifat-sifat penjumlahan tidak berlaku pada pengurangan, kecuali sifat pengurangan dengan matriks nol, yaitu A – 0 = A.</p>
+<p>###Sifat perkalian matriks
+Perkalian antara dua matriks bisa dilakukan jika jumlah kolom matriks pertama sama dengan jumlah baris matriks kedua. Misalnya matriks ordo 2 x 3 bisa dikalikan dengan ordo 3 x 2, matriks ordo 3 x 1 bisa dikalikan ordo 1 x 3, dan seterusnya. Pada perkalian matriks berlaku sifat-sifat berikut.</p>
+<ul class="simple">
+<li><p>Sifat asosiatif, yaitu (A × B) × C = A × (B × C).</p></li>
+<li><p>Sifat distributif, yaitu A × (B + C) = (A × B) + (A × C).</p></li>
+<li><p>Perkalian dengan matriks nol akan menghasilkan matriks nol, yaitu A × 0 = 0.</p></li>
+</ul>
+<p>###contoh perkalian matrix</p>
+<p>\begin{align*}
+A=
+\begin{bmatrix}
+1&amp;2\
+3&amp;4
+\end{bmatrix}
+&amp;&amp;
+B=
+\begin{bmatrix}
+5&amp;6\
+7&amp;8
+\end{bmatrix}
+\end{align*}</p>
+<p>Hitung Elemen Baru untuk c_{11}:
+c_{11} = (1 x 5) + (2 x 7) = 5 + 14 = 19</p>
+<p>Hitung Elemen Baru untuk c_{12}:
+c_{12} = (1 x 6) + (2 x 8) = 6 + 16 = 22</p>
+<p>Hitung Elemen Baru untuk c_{21}:
+c_{21} = (3 x 5) + (4 x 7) = 15 + 28 = 43</p>
+<p>Hitung Elemen Baru untuk c_{22}:
+c_{22} = (3 x 6) + (4 x 8) = 18 + 32 = 50</p>
+<p>hasilnya:</p>
+<p>\begin{equation*}
+C=
+\begin{bmatrix}
+19&amp;22\
+43&amp;50
+\end{bmatrix}
+\end{equation*}</p>
 <p>##membuat matrix</p>
 <ul class="simple">
 <li><p>a ukuran 3x3 m x n</p></li>
@@ -433,6 +522,10 @@ tidak mengerjakan keluar kelas</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Matriks C:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
 
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Matriks C:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
 <span class="c1"># Matriks D ukuran 3x3</span>
 <span class="n">C_trans</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Matriks D:&quot;</span><span class="p">)</span>
@@ -450,6 +543,11 @@ Matriks B:
 [[4 7 4]
  [9 2 2]
  [0 5 8]]
+
+Matriks C:
+[[2 0]
+ [1 5]
+ [6 9]]
 
 Matriks C:
 [[2 0]
@@ -478,18 +576,6 @@ Matriks D:
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">melakukan perkalian matrix A dan C&quot;</span> <span class="p">)</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">A</span><span class="nd">@C</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">untuk mendapatkan bentuk atau dimensi dari matriks atau larik numpy&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">melakukan perkalian matrix B dan C&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="nd">@C</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">melakukan uji coba A(BC) = (AB)C&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="p">(</span><span class="n">B</span> <span class="o">@</span> <span class="n">C</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">((</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">)</span> <span class="o">@</span> <span class="n">C</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">melakukan penjumlahan dan perkalian matrix&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">((</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span> <span class="o">@</span> <span class="n">C</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -518,8 +604,35 @@ melakukan perkalian matrix A dan C
 [[41 79]
  [35 52]
  [15 23]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">untuk mendapatkan bentuk atau dimensi dari matriks atau larik numpy&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-untuk mendapatkan bentuk atau dimensi dari matriks atau larik numpy
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">melakukan perkalian matrix B dan C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="nd">@C</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">melakukan uji coba A(BC) = (AB)C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="p">(</span><span class="n">B</span> <span class="o">@</span> <span class="n">C</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">)</span> <span class="o">@</span> <span class="n">C</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">melakukan penjumlahan dan perkalian matrix&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span> <span class="o">@</span> <span class="n">C</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>untuk mendapatkan bentuk atau dimensi dari matriks atau larik numpy
 (3, 2)
 
 melakukan perkalian matrix B dan C
@@ -604,6 +717,94 @@ melakukan penjumlahan dan perkalian matrix
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fungsi untuk melakukan penjumlahan dua matriks</span>
+<span class="k">def</span> <span class="nf">tambah_matriks</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># Fungsi untuk melakukan perkalian dua matriks</span>
+<span class="k">def</span> <span class="nf">kali_matriks</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">B</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">q</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># Fungsi untuk melakukan transpose suatu matriks</span>
+<span class="k">def</span> <span class="nf">transpose_matriks</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># Matriks A</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+
+<span class="c1"># Matriks B</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]]</span>
+
+<span class="c1"># Penjumlahan matriks A dan B</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">tambah_matriks</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil penjumlahan matriks A dan B:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">C</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+<span class="c1"># Perkalian matriks A dan B</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">kali_matriks</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hasil perkalian matriks A dan B:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">D</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+<span class="c1"># Transpose matriks A</span>
+<span class="n">A_transpose</span> <span class="o">=</span> <span class="n">transpose_matriks</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Transpose dari matriks A:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">A_transpose</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+<span class="c1"># Transpose matriks B</span>
+<span class="n">B_transpose</span> <span class="o">=</span> <span class="n">transpose_matriks</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Transpose dari matriks B:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">B_transpose</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil penjumlahan matriks A dan B:
+[6, 8]
+[10, 12]
+
+Hasil perkalian matriks A dan B:
+[19, 22]
+[43, 50]
+
+Transpose dari matriks A:
+[1, 3]
+[2, 4]
+
+Transpose dari matriks B:
+[5, 7]
+[6, 8]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -645,11 +846,11 @@ melakukan penjumlahan dan perkalian matrix
       </div>
     </a>
     <a class="right-next"
-       href="markdown-notebooks.html"
+       href="Tugas3.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Notebooks with MyST Markdown</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -668,9 +869,12 @@ melakukan penjumlahan dan perkalian matrix
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sifat-penjumlahan-matriks">Sifat penjumlahan matriks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-penjumlahannya">contoh penjumlahannya</a></li>
 </ul>
-
+</li>
+</ul>
   </nav></div>
 
 </div></div>
