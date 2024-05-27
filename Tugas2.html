@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Tugas2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -180,6 +182,11 @@
 <li class="toctree-l1"><a class="reference internal" href="SistemLinier.html"><strong>TUGAS 1</strong></a></li>
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>TUGAS 2</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transformasi_Linier.html"><strong>Transformasi Linier.ipynb</strong></a></li>
+
+
+
+
 </ul>
 
     </div>
@@ -477,13 +484,14 @@ c_{21} = (3 x 5) + (4 x 7) = 15 + 28 = 43</p>
 <p>Hitung Elemen Baru untuk c_{22}:
 c_{22} = (3 x 6) + (4 x 8) = 18 + 32 = 50</p>
 <p>hasilnya:</p>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[\begin{split}
 C=
 \begin{bmatrix}
-19&amp;22\
+19&amp;22\\
 43&amp;50
 \end{bmatrix}
-\end{equation*}</p>
+\end{split}\]</div>
 <p>##membuat matrix</p>
 <ul class="simple">
 <li><p>a ukuran 3x3 m x n</p></li>
@@ -855,33 +863,6 @@ Transpose dari matriks A:
 Transpose dari matriks B:
 [5, 7]
 [6, 8]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<span class="n">n_sub</span> <span class="o">=</span> <span class="n">n</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">sub</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0, 5, 6], [6, 5, 3], [1, 1, 2]]
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-28-f9c032136846&gt;</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">n_sub</span> <span class="o">=</span> <span class="n">n</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">sub</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: list indices must be integers or slices, not tuple
 </pre></div>
 </div>
 </div>
