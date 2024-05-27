@@ -385,7 +385,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-jenis-matrix-tranformasi"><strong>jenis jenis matrix tranformasi</strong></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-code-refleksi-dan-rotasi">contoh code refleksi dan rotasi</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#skala-scaling">skala (scaling)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shear-geseran">5. Shear (Geseran)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shear-geseran">Shear (Geseran)</a></li>
 </ul>
 
             </nav>
@@ -519,74 +519,126 @@ Shear menggeser satu bagian dari objek lebih dari bagian lain, menghasilkan efek
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Polygon</span>
 
-<span class="c1"># Definisi fungsi transformasi T</span>
-<span class="k">def</span> <span class="nf">T</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="o">-</span><span class="mi">4</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="c1"># Function to plot triangle</span>
+<span class="k">def</span> <span class="nf">plot_triangle</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">):</span>
+    <span class="n">triangle</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">triangle</span><span class="p">)</span>
 
-<span class="c1"># Definisikan beberapa titik di ruang R^3</span>
-<span class="n">points_R3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="p">])</span>
+<span class="c1"># Function to plot transformation</span>
+<span class="k">def</span> <span class="nf">plot_transformation</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
-<span class="c1"># Terapkan transformasi pada setiap titik</span>
-<span class="n">points_R2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">T</span><span class="p">(</span><span class="n">point</span><span class="p">)</span> <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">points_R3</span><span class="p">])</span>
+    <span class="c1"># Define vertices of the original triangle</span>
+    <span class="n">original_triangle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.86602540378</span><span class="p">]])</span>  <span class="c1"># Equilateral triangle</span>
 
-<span class="c1"># Visualisasikan titik-titik sebelum dan sesudah transformasi</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="c1"># Apply transformation to each vertex</span>
+    <span class="n">transformed_triangle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">original_triangle</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
 
-<span class="c1"># Plot di R^3</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">points_R3</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">points_R3</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">points_R3</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original Points (R^3)&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">points_R3</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">point</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    <span class="c1"># Plot original triangle</span>
+    <span class="n">plot_triangle</span><span class="p">(</span><span class="n">original_triangle</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X1&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;X2&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;X3&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Points in R^3&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Plot transformed triangle</span>
+    <span class="n">plot_triangle</span><span class="p">(</span><span class="n">transformed_triangle</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 
-<span class="c1"># Plot di R^2</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">points_R2</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">points_R2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Transformed Points (R^2)&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">points_R2</span><span class="p">:</span>
-    <span class="n">ax2</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    <span class="c1"># Set labels and title</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
 
-<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;2X1 + X3&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;-4X2&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Points in R^2&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Set limits</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="c1"># Show grid</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Show plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Matrices from the table</span>
+<span class="n">rotation_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">rotation_45</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)],</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)]])</span>
+<span class="n">rotation_90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="n">rotation_180</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">reflection_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">reflection_45</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="n">reflection_90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">reflection_minus_45</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+
+<span class="c1"># List of matrices and titles</span>
+<span class="n">matrices</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">rotation_0</span><span class="p">,</span> <span class="s1">&#39;Rotation 0°&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">rotation_45</span><span class="p">,</span> <span class="s1">&#39;Rotation ±45°&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">rotation_90</span><span class="p">,</span> <span class="s1">&#39;Rotation 90°&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">rotation_180</span><span class="p">,</span> <span class="s1">&#39;Rotation 180°&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">reflection_0</span><span class="p">,</span> <span class="s1">&#39;Reflection 0°&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">reflection_45</span><span class="p">,</span> <span class="s1">&#39;Reflection 45°&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">reflection_90</span><span class="p">,</span> <span class="s1">&#39;Reflection 90°&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">reflection_minus_45</span><span class="p">,</span> <span class="s1">&#39;Reflection -45°&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># Plot each transformation</span>
+<span class="k">for</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">matrices</span><span class="p">:</span>
+    <span class="n">plot_transformation</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/78b9ed8b94533da2ce4c1b4a8edeee633940e240a04d1a85c56054fdef3313de.png" src="_images/78b9ed8b94533da2ce4c1b4a8edeee633940e240a04d1a85c56054fdef3313de.png" />
+<img alt="_images/cb6369424bfd3dd5310a75a939c079fdc8c0428097b54f41e034ecdfe1648fb0.png" src="_images/cb6369424bfd3dd5310a75a939c079fdc8c0428097b54f41e034ecdfe1648fb0.png" />
+<img alt="_images/49e6cbefdaabe9c07a052c7010511ff7855742aab49b1e34177f06405b1ba162.png" src="_images/49e6cbefdaabe9c07a052c7010511ff7855742aab49b1e34177f06405b1ba162.png" />
+<img alt="_images/9d5b49d2db5684ecd880697fab96a9530989cc4d6c197dd5e3f4ed342589e06b.png" src="_images/9d5b49d2db5684ecd880697fab96a9530989cc4d6c197dd5e3f4ed342589e06b.png" />
+<img alt="_images/0acbb78f41227a0f80940db35c9cb7b03e95853f16ecd388ec1c1f94695f89ea.png" src="_images/0acbb78f41227a0f80940db35c9cb7b03e95853f16ecd388ec1c1f94695f89ea.png" />
+<img alt="_images/cf20ad7e5a14695d4ce5351d5783235017f26a19d3198722fbebe2ff54b5a023.png" src="_images/cf20ad7e5a14695d4ce5351d5783235017f26a19d3198722fbebe2ff54b5a023.png" />
+<img alt="_images/11dd1669b62624b2cfcea27c2c1a35fad0faaaecf29454b4f68308b68c3fca0d.png" src="_images/11dd1669b62624b2cfcea27c2c1a35fad0faaaecf29454b4f68308b68c3fca0d.png" />
+<img alt="_images/f950c63ce59595edb3ad264830e6d0757ee61661ff4395a726908c2b05a2f8aa.png" src="_images/f950c63ce59595edb3ad264830e6d0757ee61661ff4395a726908c2b05a2f8aa.png" />
+<img alt="_images/9dece522908294c11951ed4cfa4c3502c8b6dd9314754650ae3f2a27d0399c00.png" src="_images/9dece522908294c11951ed4cfa4c3502c8b6dd9314754650ae3f2a27d0399c00.png" />
 </div>
 </div>
 <p>##penjelasan code di atas</p>
+<p>Kode tersebut melakukan visualisasi transformasi geometris pada sebuah segitiga sama sisi menggunakan berbagai matriks transformasi. Berikut penjelasan fungsionalnya:</p>
+<ol class="arabic simple">
+<li><p><strong>Import Library:</strong></p>
 <ul class="simple">
-<li><p>𝑇 didefinisikan untuk menerima sebuah vektor 𝑥
-x yang merupakan koordinat dalam ruang tiga dimensi 𝑅3, kemudian melakukan transformasi linear terhadap vektor tersebut ke ruang dua dimensi 𝑅2. Transformasi yang dilakukan adalah 𝑇(𝑥)=[2𝑥1 + 𝑥3, − 4𝑥2], di mana 𝑥1, 𝑥2,dan 𝑥3 adalah komponen-komponen dari vektor 𝑥</p></li>
-<li><p>array 𝑅3 atau points_R3 didefinisikan untuk menyimpan beberapa titik dalam ruang tiga dimensi 𝑅3. Setiap baris dari array ini mewakili sebuah titik, di mana setiap titik memiliki tiga koordinat (𝑥1, 𝑥2, 𝑥3).</p></li>
-<li><p>Untuk setiap titik dalam points_R3, transformasi 𝑇 diterapkan menggunakan fungsi T(x) yang telah didefinisikan sebelumnya. Hasil transformasi disimpan dalam array points_R2.</p></li>
-<li><p>Visualisasikan Titik-titik Sebelum dan Sesudah Transformasi: Penggambaran dilakukan dengan menggunakan matplotlib. Dua subplot dibuat dalam satu gambar:</p></li>
-<li><p>Plot di Ruang 𝑅3 menggunakan proyeksi tiga dimensi (projection=’3d’). Setiap titik dalam points_R3 diplot sebagai titik biru dalam ruang tiga dimensi.</p></li>
-<li><p>Plot di Ruang 𝑅2 pada subplot kedua tanpa proyeksi tiga dimensi. Setiap titik dalam points_R2 diplot sebagai titik merah dalam ruang dua dimensi.</p></li>
-<li><p>sumbu dan judul ditambahkan untuk kedua subplot.</p></li>
-<li><p>Fungsi plt.show() digunakan untuk menampilkan gambar.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> untuk operasi matriks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> untuk membuat grafik.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matplotlib.patches.Polygon</span></code> untuk menggambar segitiga.</p></li>
 </ul>
+</li>
+<li><p><strong>Fungsi <code class="docutils literal notranslate"><span class="pre">plot_triangle</span></code>:</strong></p>
+<ul class="simple">
+<li><p>Fungsi ini menggambar segitiga dengan titik sudut yang diberikan (<code class="docutils literal notranslate"><span class="pre">vertices</span></code>).</p></li>
+<li><p>Segitiga digambar dengan warna yang bisa ditentukan (default: biru).</p></li>
+</ul>
+</li>
+<li><p><strong>Fungsi <code class="docutils literal notranslate"><span class="pre">plot_transformation</span></code>:</strong></p>
+<ul class="simple">
+<li><p>Membuat plot baru dengan sumbu X dan Y.</p></li>
+<li><p>Mendefinisikan titik sudut segitiga asal (segitiga sama sisi).</p></li>
+<li><p>Menerapkan transformasi ke segitiga menggunakan matriks transformasi yang diberikan.</p></li>
+<li><p>Menggambar segitiga asal (biru) dan segitiga hasil transformasi (merah).</p></li>
+<li><p>Menambahkan label sumbu, judul, batas sumbu, dan grid pada plot.</p></li>
+<li><p>Menampilkan plot.</p></li>
+</ul>
+</li>
+<li><p><strong>Definisi Matriks Transformasi:</strong></p>
+<ul class="simple">
+<li><p>Matriks untuk berbagai rotasi (0°, 45°, 90°, 180°) dan refleksi (0°, 45°, 90°, -45°) didefinisikan menggunakan numpy.</p></li>
+</ul>
+</li>
+<li><p><strong>Loop untuk Visualisasi:</strong></p>
+<ul class="simple">
+<li><p>Loop ini iterasi melalui daftar matriks transformasi dan judulnya.</p></li>
+<li><p>Setiap iterasi memanggil <code class="docutils literal notranslate"><span class="pre">plot_transformation</span></code> dengan matriks dan judul yang sesuai.</p></li>
+<li><p>Menampilkan plot transformasi untuk masing-masing matriks.</p></li>
+</ul>
+</li>
+</ol>
+<p>Secara keseluruhan, kode ini menggambar segitiga asal dan hasil transformasinya untuk berbagai rotasi dan refleksi, sehingga kita bisa melihat bagaimana segitiga berubah bentuk dan orientasi sesuai dengan transformasi yang diterapkan.</p>
 </section>
 <section id="skala-scaling">
 <h1>skala (scaling)<a class="headerlink" href="#skala-scaling" title="Link to this heading">#</a></h1>
@@ -680,7 +732,7 @@ y
 </div>
 </section>
 <section id="shear-geseran">
-<h1>5. Shear (Geseran)<a class="headerlink" href="#shear-geseran" title="Link to this heading">#</a></h1>
+<h1>Shear (Geseran)<a class="headerlink" href="#shear-geseran" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -801,7 +853,7 @@ y
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-jenis-matrix-tranformasi"><strong>jenis jenis matrix tranformasi</strong></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-code-refleksi-dan-rotasi">contoh code refleksi dan rotasi</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#skala-scaling">skala (scaling)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shear-geseran">5. Shear (Geseran)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shear-geseran">Shear (Geseran)</a></li>
 </ul>
 
   </nav></div>
